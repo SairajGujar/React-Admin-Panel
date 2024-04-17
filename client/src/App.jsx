@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import List from "./pages/List";
-import Login from "./pages/Login";
-import New from "./pages/New";
-import Single from "./pages/Single";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      
+    </>
+  );
+}
+
+export default App;
+
+
+
+{/* <BrowserRouter>
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
@@ -25,9 +29,4 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </BrowserRouter>
-    </>
-  );
-}
-
-export default App;
+      </BrowserRouter> */}

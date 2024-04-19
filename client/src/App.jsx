@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Auth from "./pages/Auth";
+import {Toaster} from 'react-hot-toast'
 function App() {
   return (
     <>
-      
+    <div><Toaster/></div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Auth/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

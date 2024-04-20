@@ -2,18 +2,28 @@ import React, { useState } from "react";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import CircularProgress from '@mui/material/CircularProgress';
 import toast from "react-hot-toast";
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Tooltip from '@mui/material/Tooltip';
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 const Auth = () => {
-  const [verify, setVerify] = useState(true);
+  const navigate = useNavigate();
+  const [verify, setVerify] = useState(false);
   const [loading, setLoading] = useState(false);
   return (
     <div className="flex flex-col min-h-[100vh]">
-      <div className="flex w-full bg-blue-700 text-white shadow-md h-12 items-center justify-start px-5">
-        <span className="font-semibold text-[20px]">Travel.com</span>
-      </div>
+      <Navbar/>
       <div className="wrapper bg-slate-100 min-h-[100vh] items-center justify-center flex flex-col gap-3">
         <p className="text-4xl font-semibold">Become A Partner</p>
-        <div className="h-[83vh] p-5 bg-[#ffffff] w-[50%] shadow-lg flex flex-col justify-center items-center gap-2">
+        <div className="h-[83vh] relative p-5 bg-[#ffffff] w-[50%] shadow-lg flex flex-col justify-center items-center gap-2">
+        {
+          verify?<Tooltip title="Back">
+          <ArrowBackIcon className="absolute top-7 left-10 hover:bg-slate-200 cursor-pointer hover:rounded-full"  onClick={()=>{
+            setVerify(false)
+          }}/>
+        </Tooltip>
+          :null
+        }
           {verify ? (
 
             <form>
@@ -55,8 +65,10 @@ const Auth = () => {
                   setLoading(true);
                   setTimeout(()=>{
                     setLoading(false);
-                    toast.success("User verified")
                   }, 2000)
+                  toast.success("User verified")
+                  navigate('/enquiry')
+                  
                 }} className="text-white flex gap-2 justify-center bg-blue-700 hover:bg-blue-800  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 {
                   loading?<CircularProgress color="inherit" size='20px'/>:<p>Verify</p>
@@ -160,7 +172,9 @@ const Auth = () => {
                 />
               </div>
 
-              <button className="text-white flex gap-2 justify-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <button onClick={()=>{
+                setVerify(true)
+              }} className="text-white flex gap-2 justify-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Continue
                 <ArrowRightAltIcon />
               </button>

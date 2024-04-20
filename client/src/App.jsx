@@ -2,6 +2,8 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth";
 import {Toaster} from 'react-hot-toast'
+import Enquiry from "./pages/Enquiry";
+import Apartment from "./pages/Apartment";
 function App() {
   return (
     <>
@@ -10,6 +12,14 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Auth/>}/>
+            <Route path="enquiry">
+              <Route index element={<Enquiry/>}/>
+              <Route path="apartment">
+                <Route index element={<Apartment/>}/>
+                <Route path=":section" element={<Apartment/>}/>
+              </Route>
+              
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

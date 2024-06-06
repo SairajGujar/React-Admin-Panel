@@ -1,7 +1,8 @@
 import React from 'react'
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
-
+import { useNavigate } from 'react-router-dom';
 const Location = ({setPageno}) => {
+  const navigate = useNavigate();
   return (
     <div className="pt-16 pl-28 flex flex-col gap-4">
       <div className="text-3xl font-bold">Pin your location on map</div>
@@ -23,7 +24,7 @@ const Location = ({setPageno}) => {
                     return prev+1
                 }
                 else{
-                    return prev
+                    navigate('/enquiry/apartment/setup_info')
                 }
 
             })

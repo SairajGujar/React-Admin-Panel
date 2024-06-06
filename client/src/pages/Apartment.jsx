@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import TabBar from '../components/TabBar'
 import { useParams } from 'react-router-dom'
 import BasicInfo from '../components/BasicInfo/BasicInfo'
-import PropSetup from '../components/PropSetup'
+import PropSetup from '../components/PropSetup/PropSetup'
 import Photos from '../components/Photos'
 import Pricing from '../components/Pricing'
 

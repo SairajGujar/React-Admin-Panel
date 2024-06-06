@@ -4,7 +4,14 @@ import Auth from "./pages/Auth";
 import {Toaster} from 'react-hot-toast'
 import Enquiry from "./pages/Enquiry";
 import Apartment from "./pages/Apartment";
+import {Cloudinary} from "@cloudinary/url-gen";
 function App() {
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dw2tw7bor'
+    }
+  });
+
   return (
     <>
     <div><Toaster/></div>
@@ -30,22 +37,3 @@ function App() {
 export default App;
 
 
-
-{/* <BrowserRouter>
-        <Routes>
-          <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
-              <Route path="new" element={<New />}/>
-            </Route>
-
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
-              <Route path="new" element={<New />}/>
-            </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter> */}
